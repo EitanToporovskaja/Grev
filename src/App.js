@@ -1,22 +1,30 @@
-import logo from './logo.svg';
+import AgregarPlato from './AgregarPlato';
+import AgregarCategoria from './AgregarCategoria';
+import Estadisticas from './estadisticas';
+import Home from './home';
+import Inventario from './Inventario';
+import Login from './login';
+import PreguntasFrecuentes from './PreguntasFrecuentes';
+import Registro from './Registro';
+import Suscripcion from './suscripcion';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <AgregarPlato/>
+      <AgregarCategoria/>
+      
+      <Estadisticas/>
+      <Home/>
+      <Inventario/>
+      <Login/>
+      <PreguntasFrecuentes/>
+      <Registro/>
+      <Suscripcion/>
+
       </header>
     </div>
   );
