@@ -4,9 +4,9 @@ import Estadisticas from './estadisticas';
 import Home from './home';
 import Inventario from './Inventario';*/
 import Login from './login';
-/*import PreguntasFrecuentes from './PreguntasFrecuentes';
-import Registro from './Registro';
-import Suscripcion from './suscripcion';*/
+/*import PreguntasFrecuentes from './PreguntasFrecuentes';*/
+//import Registro from './Registro';
+/*import Suscripcion from './suscripcion';*/
 //import Conexion from '../conexion';
 import React, { useState, useEffect } from 'react';
 //import connectAndQuery from './dbConnection';
@@ -41,7 +41,7 @@ function App() {
       <Inventario/>*/}
       <Login  data={data}/>
       {/*<PreguntasFrecuentes/>*/}
-      {/*<Registro/>*/}
+      {/*<Registro data={data}/>*/}
       {/*<Suscripcion/>*/}
       </header>
     </div>
