@@ -1,12 +1,12 @@
-import AgregarPlato from './AgregarPlato';
+/*import AgregarPlato from './AgregarPlato';
 import AgregarCategoria from './AgregarCategoria';
 import Estadisticas from './estadisticas';
 import Home from './home';
-import Inventario from './Inventario';
+import Inventario from './Inventario';*/
 import Login from './login';
-import PreguntasFrecuentes from './PreguntasFrecuentes';
+/*import PreguntasFrecuentes from './PreguntasFrecuentes';
 import Registro from './Registro';
-import Suscripcion from './suscripcion';
+import Suscripcion from './suscripcion';*/
 //import Conexion from '../conexion';
 import React, { useState, useEffect } from 'react';
 //import connectAndQuery from './dbConnection';
