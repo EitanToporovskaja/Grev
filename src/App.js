@@ -7,7 +7,6 @@ import Login from './login';
 import PreguntasFrecuentes from './PreguntasFrecuentes';
 import Registro from './Registro';
 import Suscripcion from './suscripcion';
-//import BD
 import './App.css';
 
 function App() {

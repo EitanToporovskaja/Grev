@@ -8,7 +8,7 @@ const config = {
         password: '1234',
         database: 'Grev',
         options: {
-            encrypt: true,
+            encrypt: false,
             trustServerCertificate: true
         }
     };
@@ -48,8 +48,31 @@ async function connectAndQuery() {
 
         await sql.close();
     } catch (err) {
-        console.error('Database connection failed: ', err);
+        console.error('Coneccion a la base de datos fallida: ', err);
     }
 }
+async function login(username, password) {
+    try {
+        let pool = await sql.connect(config);
+        let result = await pool.request()
+            .input('username', sql.VarChar, username)
+            .input('password', sql.VarChar, password)
+            .query('SELECT * FROM Users WHERE username = @username AND password = @password');
+
+        await sql.close();
+        if (result.recordset.length > 0) {
+            return { success: true, message: 'Inicio de sesión exitoso', user: result.recordset[0] };
+        } else {
+            return { success: false, message: 'Usuario o contraseña incorrectos' };
+        }
+    } catch (err) {
+        console.error('Error al conectar con la base de datos: ', err);
+        return { success: false, message: 'Ocurrió un error al conectar con la base de datos.' };
+    }
+}
+
+login('exampleUsername', 'examplePassword').then(result => {
+    console.log(result);
+});
 
 connectAndQuery();
