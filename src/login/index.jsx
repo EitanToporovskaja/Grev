@@ -1,30 +1,30 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+const Login = ({ data }) => {
+    const [nombreUsu, setNombreUsu] = useState('');
+    const [contraseña, setContraseña] = useState('');
     const [message, setMessage] = useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3000/login', {
-                username,
-                password
-            });
-
-            if (response.data.success) {
-                setMessage('Inicio de sesión exitoso');
-            } else {
-                setMessage('Usuario o contraseña incorrectos');
-            }
-        } catch (error) {
-            console.error('¡Hubo un error!', error);
-            setMessage('Ocurrió un error. Por favor, inténtalo de nuevo más tarde.');
-        }
-    };
+            const user = data.find(user => user.nombreUsu === nombreUsu);
+            if (user) {
+              if (user.contraseña === contraseña) {
+                  setMessage('Inicio de sesión exitoso');
+              } else {
+                  setMessage('Contraseña incorrecta');
+              }
+          } else {
+              setMessage('Usuario no encontrado');
+          }
+      } catch (error) {
+          console.error('¡Hubo un error!', error);
+          setMessage('Ocurrió un error. Por favor, inténtalo de nuevo más tarde.');
+      }
+  };
 
     return (
         <div>
@@ -34,8 +34,8 @@ const Login = () => {
                     <label>Username:</label>
                     <input
                         type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        value={nombreUsu}
+                        onChange={(e) => setNombreUsu(e.target.value)}
                         required
                     />
                 </div>
@@ -43,8 +43,8 @@ const Login = () => {
                     <label>Password:</label>
                     <input
                         type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={contraseña}
+                        onChange={(e) => setContraseña(e.target.value)}
                         required
                     />
                 </div>

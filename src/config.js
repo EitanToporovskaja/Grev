@@ -4,5 +4,5 @@ config();
 console.log(process.env.NICKNAME)
 
 export default {
-    port:4000
+    port:3000
 }
