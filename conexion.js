@@ -1,21 +1,17 @@
 const Connection = require('tedious').Connection;
 const Request = require('tedious').Request;
+const sql = require('mssql');
 
 const config = { 
-    server: 'A-PHZ2-CIDI-18',
-    authentication: {
-        type: 'default',
+        server: 'A-PHZ2-CIDI-18',
+        user: 'LucasRu',
+        password: '1234',
+        database: 'Grev',
         options: {
-            userName: "",
-            password: ""
+            encrypt: true,
+            trustServerCertificate: true
         }
-    },
-    options: {
-        port: 1433,
-        database: 'CIDI',
-        trustServerCertificate: true,
-    }
-}
+    };
 const connection = new Connection(config);
 
 connection.connect();
@@ -40,3 +36,20 @@ function executeStatement() {
     });
 connection.execSql(request);
 }
+async function connectAndQuery() {
+    try {
+        let pool = await sql.connect(config);
+        console.log('Connected to the database');
+
+        let result = await pool.request()
+            .query('SELECT * FROM tu_tabla'); // Reemplaza 'tu_tabla' con el nombre de tu tabla
+
+        console.log(result.recordset);
+
+        await sql.close();
+    } catch (err) {
+        console.error('Database connection failed: ', err);
+    }
+}
+
+connectAndQuery();
