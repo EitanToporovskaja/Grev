@@ -1,5 +1,5 @@
-/*import AgregarPlato from './AgregarPlato';
-import AgregarCategoria from './AgregarCategoria';
+//import AgregarPlato from './AgregarPlato';
+/*import AgregarCategoria from './AgregarCategoria';
 import Estadisticas from './estadisticas';
 import Home from './home';
 import Inventario from './Inventario';*/
@@ -34,11 +34,11 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      {/*<AgregarPlato/> */} {/*/* aca dentro esta la pantalla de carga del logo girando*/}
-      {/*<AgregarCategoria/>*/}
-      {/*<Estadisticas/>*/}
-      {/*<Home/>*/}
-      {/*<Inventario/>*/}
+      {/*<AgregarPlato/>  {/* aca dentro esta la pantalla de carga del logo girando*/}
+      {/*<AgregarCategoria/>
+      <Estadisticas/>
+      <Home/>
+      <Inventario/>*/}
       <Login  data={data}/>
       {/*<PreguntasFrecuentes/>*/}
       {/*<Registro/>*/}
