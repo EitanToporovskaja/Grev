@@ -10,7 +10,20 @@ import Login from './login';
 //import Conexion from '../conexion';
 import React, { useState, useEffect } from 'react';
 //import connectAndQuery from './dbConnection';
+import { createRoot } from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link,
+} from "react-router-dom";
 import './App.css';
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
 
 function App() {
   const [data, setData] = useState([]);
@@ -31,20 +44,53 @@ function App() {
   /*useEffect(() => {
     connectAndQuery();
 }, []);*/
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <div>
+        <h1>Hello World</h1>
+        <Link to="about">About Us</Link>
+      </div>
+    ),
+  },
+  {
+    path: "about",
+    element: <div>About</div>,
+  },
+]);
+
+createRoot(document.getElementById("root")).render(
+  <RouterProvider router={router} />
+);
+
   return (
-    <div className="App">
-      <header className="App-header">
-      {/*<AgregarPlato/>  {/* aca dentro esta la pantalla de carga del logo girando*/}
-      {/*<AgregarCategoria/>
-      <Estadisticas/>
-      <Home/>
-      <Inventario/>*/}
-      <Login  data={data}/>
-      {/*<PreguntasFrecuentes/>*/}
-      {/*<Registro data={data}/>*/}
-      {/*<Suscripcion/>*/}
-      </header>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/registro">Registro</Link>
+          </li>
+        </ul>
+      </nav>
     </div>
+
+  //   <div className="App">
+  // <header className="App-header">
+  //     /*<AgregarPlato/>  {/* aca dentro esta la pantalla de carga del logo girando*/
+  //     /*<AgregarCategoria/>
+  //     <Estadisticas/>
+  //     <Home/>
+  //     <Inventario/>*/
+  //     <Login  data={data}/>
+  //     /*<PreguntasFrecuentes/>*/
+  //     /*<Registro data={data}/>*/
+  //     /*<Suscripcion/>*/
+  //   </header>}
+  // </div>
   );
 }
 
